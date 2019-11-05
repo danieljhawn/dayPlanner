@@ -5,7 +5,7 @@
     <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport"="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -22,40 +22,58 @@
     </header>
     <container id="main">
         <div class="row hour rounded p-3 m-2 bg-secondary text-white" data-hour=9>9am
-            <div class="col border border-info rounded p-2 ml-2 mr-2 todos">CONTENT</div>
-            <div class="col-1 btn btn-success">SAVE</div>
+            <div class="col rounded p-2 ml-2 mr-2 todos">
+                <textarea class="form-control" id="9am" rows="1" placeholder="enter text here"></textarea>
+            </div>
+            <div class="col-1 btn btn-success saveNotesBtn">SAVE</div>
         </div>
         <div class="row hour rounded p-3 m-2 bg-secondary text-white" data-hour=10>10am
-            <div class="col border border-info rounded p-2 ml-2 mr-2 todos">CONTENT</div>
-            <div class="col-1 btn btn-success">SAVE</div>
+            <div class="col rounded p-2 ml-2 mr-2 todos">
+                <textarea class="form-control" id="10am" rows="1" placeholder="enter text here"></textarea>
+            </div>
+            <div class="col-1 btn btn-success saveNotesBtn">SAVE</div>
         </div>
         <div class="row hour rounded p-3 m-2 bg-secondary text-white" data-hour=11>11am
-            <div class="col border border-info rounded p-2 ml-2 mr-2 todos">CONTENT</div>
-            <div class="col-1 btn btn-success">SAVE</div>
+            <div class="col rounded p-2 ml-2 mr-2 todos">
+                <textarea class="form-control" id="11am" rows="1" placeholder="enter text here"></textarea>
+            </div>
+            <div class="col-1 btn btn-success saveNotesBtn">SAVE</div>
         </div>
         <div class="row hour rounded p-3 m-2 bg-secondary text-white" data-hour=12>12am
-            <div class="col border border-info rounded p-2 ml-2 mr-2 todos">CONTENT</div>
-            <div class="col-1 btn btn-success">SAVE</div>
+            <div class="col rounded p-2 ml-2 mr-2 todos">
+                <textarea class="form-control" id="12pm" rows="1" placeholder="enter text here"></textarea>
+            </div>
+            <div class="col-1 btn btn-success saveNotesBtn">SAVE</div>
         </div>
         <div class="row hour rounded p-3 m-2 bg-secondary text-white" data-hour=13>1pm
-            <div class="col border border-info rounded p-2 ml-2 mr-2 todos">CONTENT</div>
-            <div class="col-1 btn btn-success">SAVE</div>
+            <div class="col rounded p-2 ml-2 mr-2 todos">
+                <textarea class="form-control" id="1pm" rows="1" placeholder="enter text here"></textarea>
+            </div>
+            <div class="col-1 btn btn-success saveNotesBtn">SAVE</div>
         </div>
         <div class="row hour rounded p-3 m-2 bg-secondary text-white" data-hour=14>2pm
-            <div class="col border border-info rounded p-2 ml-2 mr-2 todos">CONTENT</div>
-            <div class="col-1 btn btn-success">SAVE</div>
+            <div class="col rounded p-2 ml-2 mr-2 todos">
+                <textarea class="form-control" id="2pm" rows="1" placeholder="enter text here"></textarea>
+            </div>
+            <div class="col-1 btn btn-success saveNotesBtn">SAVE</div>
         </div>
         <div class="row hour rounded p-3 m-2 bg-secondary text-white" data-hour=15>3pm
-            <div class="col border border-info rounded p-2 ml-2 mr-2 todos">CONTENT</div>
-            <div class="col-1 btn btn-success">SAVE</div>
+            <div class="col rounded p-2 ml-2 mr-2 todos">
+                <textarea class="form-control" id="3pm" rows="1" placeholder="enter text here"></textarea>
+            </div>
+            <div class="col-1 btn btn-success saveNotesBtn">SAVE</div>
         </div>
         <div class="row hour rounded p-3 m-2 bg-secondary text-white" data-hour=16>4pm
-            <div class="col border border-info rounded p-2 ml-2 mr-2 todos">CONTENT</div>
-            <div class="col-1 btn btn-success">SAVE</div>
+            <div class="col rounded p-2 ml-2 mr-2 todos">
+                <textarea class="form-control" id="4pm" rows="1" placeholder="enter text here"></textarea>
+            </div>
+            <div class="col-1 btn btn-success saveNotesBtn">SAVE</div>
         </div>
         <div class="row hour rounded p-3 m-2 bg-secondary text-white" data-hour=17>5pm
-            <div class="col border border-info rounded p-2 ml-2 mr-2 todos">CONTENT</div>
-            <div class="col-1 btn btn-success">SAVE</div>
+            <div class="col rounded p-2 ml-2 mr-2 todos">
+                <textarea class="form-control" id="5pm" rows="1" placeholder="enter text here"></textarea>
+            </div>
+            <div class="col-1 btn btn-success saveNotesBtn">SAVE</div>
         </div>
     </container>
 
@@ -65,41 +83,48 @@
         document.querySelector("#time").innerHTML = moment().format("MMMM DD")
         var currentHour = parseInt(moment().format("HH"));
         var myHourDivs = document.querySelectorAll(".hour")
-            // var nineToFive = {
-            //     nineAM: "",
-            //     tenAM: "",
-            //     elevenAM: "",
-            //     noon: "",
-            //     onePM: "",
-            //     twoPM: "",
-            //     threePM: "",
-            //     fourPM: "",
-            //     fivePM: "",
-            // }
-        myHourDivs.forEach(function(element) {
+        var saveNotesBtn = document.getElementsByClassName("saveNotesBtn");
 
-            var divHour = parseInt(element.getAttribute("data-hour"));
-            // console.log(typeof divHour, divHour)
-            // var hourContent = ELEMENT.GET THE DAMN CONTENT HOW?!?!
+        // testing to make sure I'm able to create and save an object in localStorage
+        // var nineToFive = {
+        //         nineAM: "",
+        //         tenAM: "",
+        //         elevenAM: "",
+        //         noon: "",
+        //         onePM: "",
+        //         twoPM: "",
+        //         threePM: "",
+        //         fourPM: "",
+        //         fivePM: "",
+        //     }
 
+        // localStorage.setItem("test", JSON.stringify(nineToFive));
+        var writeToStore = function() {
+            localStorage.setItem("")
+        }
 
-            if (divHour < currentHour) {
-                console.log("less")
-                    // localStorage.setItem(divHour, hourContent)
-            } else if (divHour > currentHour) {
-                console.log("greater")
-                    // localStorage.setItem(divHour, "greater")
-            } else {
-                console.log("same")
-                    // localStorage.setItem(divHour, "sAmE")
-
-            }
-
-        })
         $(document).ready(function() {
             $(".todos").click(function() {
                 $(this).toggleClass("shadow");
             });
+
+            myHourDivs.forEach(function(element) {
+
+                var divHour = parseInt(element.getAttribute("data-hour"));
+                console.log(typeof divHour, divHour)
+                    // var hour = ELEMENT.GET THE DAMN  HOW?!?!
+
+
+                if (divHour < currentHour) {
+                    console.log("less")
+                } else if (divHour > currentHour) {
+                    console.log("greater")
+                } else {
+                    console.log("same")
+                }
+
+            })
+
         });
     </script>
 
