@@ -108,15 +108,21 @@
                 $(this).toggleClass("shadow");
             });
 
+            //I want to get the data-hour attribute from the parent element to use as the key for the localStorage entry
+            $(".form-control").click(function() {
+                $(this).localStorage.setItem("shadow");
+            });
+
+        
+
             myHourDivs.forEach(function(element) {
 
                 var divHour = parseInt(element.getAttribute("data-hour"));
-                console.log(typeof divHour, divHour)
-                    // var hour = ELEMENT.GET THE DAMN  HOW?!?!
-
+                console.log(divHour)
 
                 if (divHour < currentHour) {
                     console.log("less")
+                    // I want to change the background color of the divHour if true
                 } else if (divHour > currentHour) {
                     console.log("greater")
                 } else {
