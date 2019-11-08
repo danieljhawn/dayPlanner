@@ -65,38 +65,21 @@
         document.querySelector("#time").innerHTML = moment().format("MMMM DD")
         var currentHour = parseInt(moment().format("HH"));
         var myHourDivs = document.querySelectorAll(".hour")
+        var blockHour = parseInt($(this).attr("id"))
 
-
-
-        function hourColors() {
-            $(".hours").each(function() {
-                var blockHour = parseInt($(this).attr("id"))
-                var currentHour = parseInt(moment().format("HH"));
-                if (blockHour < currentHour) {
-                    $(this).addClass("past")
-                } else if (blockHour === currentHour) {
-                    $(this).removeClass("past")
-                    $(this).addClass("present")
-                } else {
-                    $(this).removeClass("past")
-                    $(this).removeClass("present")
-                    $(this).removeClass("future")
-                }
-            });
-        }
-
-
+        // toggles styling for the active note
         $(document).ready(function() {
             $(".todos").click(function() {
                 $(this).toggleClass("shadow");
             });
 
+            // saves the current note to localStorage
             $(".saveBtn").on("click", function() {
-                var value = $(this).siblings(".description").val()
-                var time = $(this).parent().attr("id")
-                    //can I push to local storage instead of 
-                localStorage.setItem(time, value)
-            })
+                    var value = $(this).siblings(".description").val()
+                    var time = $(this).parent().attr("id")
+                    localStorage.setItem(time, value)
+                })
+                //retrieves note from local storage
             $("#9 .description").val(localStorage.getItem("9"));
             $("#10 .description").val(localStorage.getItem("10"));
             $("#11 .description").val(localStorage.getItem("11"));
@@ -107,35 +90,28 @@
             $("#16 .description").val(localStorage.getItem("16"));
             $("#17 .description").val(localStorage.getItem("17"));
 
+            //recolors each hour block based on 
+            function hourColors() {
+                $(".hours").each(function() {
+                    var blockHour = parseInt($(this).attr("id"))
+                    var currentHour = moment().format("HH");
+                    if (blockHour < currentHour) {
+                        $(this).addClass("past")
+                    } else if (blockHour == currentHour) {
+                        $(this).removeClass("past")
+                        $(this).addClass("present")
+                    } else {
+                        $(this).removeClass("past")
+                        $(this).removeClass("present")
+                        $(this).removeClass("future")
+                    }
+                });
+            }
+            // updates the hourColors function periodically
+            var interval = setInterval(hourColors, 10000);
 
-
-
-
-
-
-
-            // function hourColors() {
-            //     $(".hours").each(function() {
-            //         var blockHour = parseInt($(this).attr("id"))
-            //         var currentHour = parseInt(moment().format("HH"));
-            //         if (blockHour < currentHour) {
-            //             $(this).addClass("past")
-            //         } else if (blockHour === currentHour) {
-            //             $(this).removeClass("past")
-            //             $(this).addClass("present")
-            //         } else {
-            //             $(this).removeClass("past")
-            //             $(this).removeClass("present")
-            //             $(this).removeClass("future")
-            //         }
-            //     });
-            // }
-
-
-
-
-
-            // myHourDivs.forEach(function(element) {
+            console.log("hello")
+                // myHourDivs.forEach(function(element) {
 
             //     var divHour = parseInt(element.getAttribute("data-hour"));
             //     console.log(divHour)
