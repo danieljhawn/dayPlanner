@@ -22,39 +22,39 @@
     </header>
     <container id="main">
         <div id="9" class="row hour nine rounded p-3 m-2" data-hour=9>9am
-            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control description" id="9" rows="1" placeholder="enter text here"></textarea>
+            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control userInput" id="9" rows="1" placeholder="enter text here"></textarea>
             <div class="col-1 btn btn-success saveBtn">SAVE</div>
         </div>
         <div id="10" class="row hour ten rounded p-3 m-2" data-hour=10>10am
-            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control description" id="10" rows="1" placeholder="enter text here"></textarea>
+            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control userInput" id="10" rows="1" placeholder="enter text here"></textarea>
             <div class="col-1 btn btn-success saveBtn">SAVE</div>
         </div>
         <div id="11" class="row hour eleven rounded p-3 m-2" data-hour=11>11am
-            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control description" id="11" rows="1" placeholder="enter text here"></textarea>
+            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control userInput" id="11" rows="1" placeholder="enter text here"></textarea>
             <div class="col-1 btn btn-success saveBtn">SAVE</div>
         </div>
         <div id="12" class="row hour twelve rounded p-3 m-2" data-hour=12>12am
-            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control description" id="12" rows="1" placeholder="enter text here"></textarea>
+            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control userInput" id="12" rows="1" placeholder="enter text here"></textarea>
             <div class="col-1 btn btn-success saveBtn">SAVE</div>
         </div>
         <div id="13" class="row hour thirteen rounded p-3 m-2" data-hour=13>1pm
-            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control description" id="13" rows="1" placeholder="enter text here"></textarea>
+            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control userInput" id="13" rows="1" placeholder="enter text here"></textarea>
             <div class="col-1 btn btn-success saveBtn">SAVE</div>
         </div>
         <div id="14" class="row hour fourteen rounded p-3 m-2" data-hour=14>2pm
-            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control description" id="14" rows="1" placeholder="enter text here"></textarea>
+            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control userInput" id="14" rows="1" placeholder="enter text here"></textarea>
             <div class="col-1 btn btn-success saveBtn">SAVE</div>
         </div>
         <div id="15" class="row hour fifteen rounded p-3 m-2" data-hour=15>3pm
-            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control description" id="15" rows="1" placeholder="enter text here"></textarea>
+            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control userInput" id="15" rows="1" placeholder="enter text here"></textarea>
             <div class="col-1 btn btn-success saveBtn">SAVE</div>
         </div>
         <div id="16" class="row hour sixteen rounded p-3 m-2" data-hour=16>4pm
-            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control description" id="16" rows="1" placeholder="enter text here"></textarea>
+            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control userInput" id="16" rows="1" placeholder="enter text here"></textarea>
             <div class="col-1 btn btn-success saveBtn">SAVE</div>
         </div>
         <div id="17" class="row hour seventeen rounded p-3 m-2" data-hour=17>5pm
-            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control description" id="17" rows="1" placeholder="enter text here"></textarea>
+            <textarea class="col rounded p-2 ml-2 mr-2 todos form-control userInput" id="17" rows="1" placeholder="enter text here"></textarea>
             <div class="col-1 btn btn-success saveBtn">SAVE</div>
         </div>
     </container>
@@ -69,62 +69,46 @@
 
         // toggles styling for the active note
         $(document).ready(function() {
-            $(".todos").click(function() {
+            $(".todos").hover(function() {
                 $(this).toggleClass("shadow");
             });
 
             // saves the current note to localStorage
             $(".saveBtn").on("click", function() {
-                    var value = $(this).siblings(".description").val()
+                    var value = $(this).siblings(".userInput").val()
                     var time = $(this).parent().attr("id")
                     localStorage.setItem(time, value)
                 })
                 //retrieves note from local storage
-            $("#9 .description").val(localStorage.getItem("9"));
-            $("#10 .description").val(localStorage.getItem("10"));
-            $("#11 .description").val(localStorage.getItem("11"));
-            $("#12 .description").val(localStorage.getItem("12"));
-            $("#13 .description").val(localStorage.getItem("13"));
-            $("#14 .description").val(localStorage.getItem("14"));
-            $("#15 .description").val(localStorage.getItem("15"));
-            $("#16 .description").val(localStorage.getItem("16"));
-            $("#17 .description").val(localStorage.getItem("17"));
+            $("#9 .userInput").val(localStorage.getItem("9"));
+            $("#10 .userInput").val(localStorage.getItem("10"));
+            $("#11 .userInput").val(localStorage.getItem("11"));
+            $("#12 .userInput").val(localStorage.getItem("12"));
+            $("#13 .userInput").val(localStorage.getItem("13"));
+            $("#14 .userInput").val(localStorage.getItem("14"));
+            $("#15 .userInput").val(localStorage.getItem("15"));
+            $("#16 .userInput").val(localStorage.getItem("16"));
+            $("#17 .userInput").val(localStorage.getItem("17"));
 
             //recolors each hour block based on 
             function hourColors() {
-                $(".hours").each(function() {
+                $(".hour").each(function() {
                     var blockHour = parseInt($(this).attr("id"))
                     var currentHour = moment().format("HH");
                     if (blockHour < currentHour) {
-                        $(this).addClass("past")
+                        $(this).addClass("past bg-light")
                     } else if (blockHour == currentHour) {
-                        $(this).removeClass("past")
-                        $(this).addClass("present")
+                        $(this).removeClass("past bg-light")
+                        $(this).addClass("present bg-success")
                     } else {
-                        $(this).removeClass("past")
-                        $(this).removeClass("present")
-                        $(this).removeClass("future")
+                        $(this).removeClass("past bg-light")
+                        $(this).removeClass("present bg-success")
+                        $(this).addClass("future bg-info")
                     }
                 });
             }
-            // updates the hourColors function periodically
-            var interval = setInterval(hourColors, 10000);
-
-            console.log("hello")
-                // myHourDivs.forEach(function(element) {
-
-            //     var divHour = parseInt(element.getAttribute("data-hour"));
-            //     console.log(divHour)
-
-            //     if (divHour < currentHour) {
-            //         console.log("less")
-            //         element.addClass("bg-secondary");
-            //     } else if (divHour > currentHour) {
-            //         console.log("greater")
-            //     } else {
-            //         console.log("same")
-            //     }
-            // })
+            // updates the hourColors function every hundred milliseconds
+            var interval = setInterval(hourColors, 100);
 
         });
     </script>
