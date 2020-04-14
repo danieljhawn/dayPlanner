@@ -4,7 +4,9 @@ body {
     background: rgb(23, 38, 39) url("./images/moroccan.svg") repeat scroll 0 0;
 }
 
-
-
-
- 
+header {
+    background: #D3E9F2;
+    background: -moz-linear-gradient(top, #D3E9F2 0%, #000000 100%);
+    background: -webkit-linear-gradient(top, #D3E9F2 0%, #000000 100%);
+    background: linear-gradient(to bottom, #D3E9F2 0%, #000000 100%);
+}
