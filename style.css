@@ -10,3 +10,7 @@ header {
     background: -webkit-linear-gradient(top, #D3E9F2 0%, #000000 100%);
     background: linear-gradient(to bottom, #D3E9F2 0%, #000000 100%);
 }
+
+.mainDiv {
+    background: rgba(54, 91, 93, 0.80)
+}
